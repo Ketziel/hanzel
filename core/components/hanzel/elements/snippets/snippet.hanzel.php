@@ -12,6 +12,7 @@ $includeHome = $modx->getOption('includeHome', $scriptProperties, true);
 $siteStart = $modx->getOption('siteStart', $scriptProperties, $modx->getOption('site_start', null, 'default'));
 
 $parentList = $modx->getParentIds($resource);
+$parentList = array_reverse($parentList);
 array_push($parentList, $resource);
 
 if ($includeHome && !in_array($siteStart, $parentList)){
