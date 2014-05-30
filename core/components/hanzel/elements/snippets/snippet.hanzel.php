@@ -7,6 +7,8 @@ $mainCrumbTpl =$modx->getOption('mainCrumbTpl', $scriptProperties, null);
 $firstCrumbTpl =$modx->getOption('firstCrumbTpl', $scriptProperties, null);
 $currentCrumbTpl =$modx->getOption('currentCrumbTpl', $scriptProperties, null);
 
+$delimiter =$modx->getOption('delimiter', $scriptProperties, '<li>|</li>');
+
 $currentResource = $modx->getOption('currentResource', $scriptProperties, $modx->resource->get('id'));
 $siteStart = $modx->getOption('siteStart', $scriptProperties, $modx->getOption('site_start', null, 'default'));
 
@@ -50,16 +52,16 @@ $vars[$tvPrefix."currentCrumbClass"] = $currentCrumbClass;
 foreach ($parentList as $parent){
 
 	$object = $modx->getObject('modResource', $parent);
-	if (in_array($object->get('template'), $excludeTemplates) == true){
+	if (in_array($object->get('template'), $excludeTemplates) == false){
 		$vars[$tvPrefix."pagetitle"] = $object->get('pagetitle');
 		$vars[$tvPrefix."url"] = $modx->makeUrl($parent, "", "", "full");
 		
 		if ($parent == reset($parentList)){ //First
-			$output .= "<li class=\"".$firstCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";
+			$output .= "<li class=\"".$firstCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
 		} else if ($parent == $currentResource) { //Current
 			$output .= "<li class=\"".$currentCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";	
 		} else { //Default
-			$output .= "<li class=\"".$mainCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";
+			$output .= "<li class=\"".$mainCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
 		}	
 	}	
 	
