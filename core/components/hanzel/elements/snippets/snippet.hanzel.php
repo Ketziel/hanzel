@@ -58,11 +58,11 @@ foreach ($parentList as $parent){
 		$vars[$tvPrefix."url"] = $modx->makeUrl($parent, "", "", "full");
 		
 		if ($parent == reset($parentList)){ //First
-			$output .= "<li class=\"".$firstClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
+			$output .= "<li class=\"".$firstClass."\" itemscope=\"itemscope\" itemtype=\"http://data-vocabulary.org/Breadcrumb\"><a itemprop=\"url\" href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
 		} else if ($parent == $currentResource) { //Current
-			$output .= "<li class=\"".$currentClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";	
+			$output .= "<li class=\"".$currentClass."\" itemscope=\"itemscope\" itemtype=\"http://data-vocabulary.org/Breadcrumb\"><a itemprop=\"url\" href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";	
 		} else { //Default
-			$output .= "<li class=\"".$innerClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
+			$output .= "<li class=\"".$innerClass."\" itemscope=\"itemscope\" itemtype=\"http://data-vocabulary.org/Breadcrumb\"><a itemprop=\"url\" href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
 		}	
 	}	
 	
