@@ -1,8 +1,9 @@
 <?php
 $tvPrefix = $modx->getOption('tvPrefix', $scriptProperties, "hz.");
-$mainCrumbClass =$modx->getOption('mainCrumbClass', $scriptProperties, "");
-$firstCrumbClass =$modx->getOption('firstCrumbClass', $scriptProperties, "firstCrumb");
-$currentCrumbClass =$modx->getOption('currentCrumbClass', $scriptProperties, "currentCrumb");
+$outerClass =$modx->getOption('outerClass', $scriptProperties, "");
+$innerClass =$modx->getOption('innerClass', $scriptProperties, "");
+$firstClass =$modx->getOption('firstClass', $scriptProperties, "firstCrumb");
+$currentClass =$modx->getOption('currentClass', $scriptProperties, "currentCrumb");
 $mainCrumbTpl =$modx->getOption('mainCrumbTpl', $scriptProperties, null);
 $firstCrumbTpl =$modx->getOption('firstCrumbTpl', $scriptProperties, null);
 $currentCrumbTpl =$modx->getOption('currentCrumbTpl', $scriptProperties, null);
@@ -45,9 +46,9 @@ if ($includeHome == 'true' && in_array($siteStart, $parentList) == false){
 $output = "<ul class=\"breadcrumb\">";
 
 $vars = array();
-$vars[$tvPrefix."mainCrumbClass"] = $mainCrumbClass;
-$vars[$tvPrefix."firstCrumbClass"] = $firstCrumbClass;
-$vars[$tvPrefix."currentCrumbClass"] = $currentCrumbClass;
+$vars[$tvPrefix."innerClass"] = $innerClass;
+$vars[$tvPrefix."firstClass"] = $firstClass;
+$vars[$tvPrefix."currentClass"] = $currentClass;
 
 foreach ($parentList as $parent){
 
@@ -57,11 +58,11 @@ foreach ($parentList as $parent){
 		$vars[$tvPrefix."url"] = $modx->makeUrl($parent, "", "", "full");
 		
 		if ($parent == reset($parentList)){ //First
-			$output .= "<li class=\"".$firstCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
+			$output .= "<li class=\"".$firstClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
 		} else if ($parent == $currentResource) { //Current
-			$output .= "<li class=\"".$currentCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";	
+			$output .= "<li class=\"".$currentClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>";	
 		} else { //Default
-			$output .= "<li class=\"".$mainCrumbClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
+			$output .= "<li class=\"".$innerClass."\"><a href=\"".$vars[$tvPrefix."url"]."\">".$vars[$tvPrefix."pagetitle"]."</a></li>".$delimiter;
 		}	
 	}	
 	
