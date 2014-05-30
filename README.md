@@ -1,7 +1,3 @@
-#hanzel
-
-A breadcrumb plugin for ModX.
-
 #Using hanzel
 
 The minimum snippet call to generate a hanzel breadcrumb:
@@ -29,9 +25,15 @@ This would generate a basic list based Breadcrumb seperated using a delimiter, w
 #Parameters
 
 
-| Name                      | Type                   | Default  Value   | Description                                                                                                                                                             |
-| -------------------|-----------------| ----------------|-----------------------------------------------------------------------------------------------------------------|
-| mainCrumbClass                     |string                  | ''                       | Class to be applied to every bread crumb other than the first and current crumbs.                                                                                        |
+| Name | Type | Default Value | Description |
+| ---- | ---- | ------------- | ----------- |
+| &firstCrumbClass | string | 'firstCrumb' | Class to be applied to the first crumb in the trail |
+| &currentCrumbClass | string | 'currentCrumb' | Class to be applied to the current crumb in the trail |
+| &mainCrumbClass | string | '' | Class to be applied to every bread crumb other than the first and current crumbs |
+| &delimiter | string | '<li>|</li>' | Delimiter to seperate crumbs |
+| &includeHome | string | 'true' | Sets whether or not the site_start resource (homepage) should be included |
+| &excludeResources | string | '' | Sets a list of Resource ids to ignore when building the breadcrumb trail |
+| &excludeTemplates | string | '' | Sets a list of Template ids to ignore when building the breadcrumb trail |
 
 #License
 

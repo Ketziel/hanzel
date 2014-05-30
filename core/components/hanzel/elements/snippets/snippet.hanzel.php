@@ -14,6 +14,7 @@ $siteStart = $modx->getOption('siteStart', $scriptProperties, $modx->getOption('
 
 $includeHome = $modx->getOption('includeHome', $scriptProperties, 'true');
 $excludeResources = $modx->getOption('excludeResources', $scriptProperties);
+$excludeTemplates = $modx->getOption('excludeTemplates', $scriptProperties);
 
 if (isset($excludeResources)){$excludeResources = explode(',', $excludeResources);} 
 	else {$excludeResources = Array();}
@@ -26,7 +27,6 @@ if ($includeHome == 'false'){
 }
 
 
-//$excludeTemplates = $modx->getOption('excludeTemplates', $scriptProperties);
 
 
 
