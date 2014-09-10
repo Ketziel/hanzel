@@ -43,7 +43,7 @@ if ($includeHome == 'true' && in_array($siteStart, $parentList) == false){
 
 
 
-$output = "<ul class=\"breadcrumb\">";
+$output = "<ul class=\"".$outerClass.""\">";
 
 $vars = array();
 $vars[$tvPrefix."innerClass"] = $innerClass;
